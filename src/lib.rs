@@ -37,7 +37,7 @@ pub fn nthmax(_n: usize, _a: &[i32]) -> Option<i32> {
     let mut vec = _a.to_vec();
     vec.sort();
     vec.dedup();
-    if(_n > vec.len() || _n == 0)
+    if(_n > vec.len())
     {
         return None;
     }
