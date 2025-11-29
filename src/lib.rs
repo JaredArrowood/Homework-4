@@ -35,13 +35,13 @@ pub fn is_palindrome(_n: u32) -> bool {
 /// Returns the nth largest element in `a`, or None if it does not exist.
 pub fn nthmax(_n: usize, _a: &[i32]) -> Option<i32> {
     let mut vec = _a.to_vec();
-    vec.sort();
-    vec.dedup();
-    if(_n > vec.len())
+    vec.sort_by(|a, b| b.cmp(a));
+    if(_n >= vec.len())
     {
         return None;
     }
-    return Some(vec[vec.len() - _n]);
+    return Some(vec[_n]);
+    
 }
 
 /// Returns a one-character String containing the most frequent character in `s`.
@@ -62,6 +62,10 @@ pub fn freq(_s: &str) -> String {
             max_count = *count;
             max_char = *c;
         }
+    }
+    if(max_count == 0)
+    {
+        return String::new();
     }
     return max_char.to_string();
 }
